@@ -1,5 +1,5 @@
 import { userSchema } from "../schemas";
-import { hashPassword } from "../utils";
+import { hashPassword , comparePassword} from "../utils";
 
 class User {
   signup = (user) => {
@@ -22,14 +22,17 @@ class User {
   };
 
   login = (user) => {
-    return new Promise((res,rej) => {
-      const user = userSchema.findOne({_id: id},(err,info) => {
-        if (err) { 
-          rej(err)
-        }else{
-          res(info)
-        }
-      })
+    return new Promise(async (res,rej) => {
+      try{
+        const User = await userSchema.findOne({ email:user.email })
+        if(!User) throw new Error('Unable to login')
+        const isMatch = await comparePassword(user.password,User.password)
+        if(!isMatch) throw new Error('Unable to Login')
+        res(User) 
+      }catch(error){
+        rej(error.message)
+      }
+     
     })
   }
 }

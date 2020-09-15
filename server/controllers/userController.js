@@ -11,11 +11,15 @@ const userController = {
     }
   },
 
-  // login: async(req,res) => {
-  //   try {
-
-  //   }
-  // }
+  login: async(req,res) => {
+    try {
+      const user = await User.login(req.body);
+      res.status(200).send("user loggedIn successfully!");
+    }catch(error){
+      console.log(error);
+      res.status(400).send(error._message);
+    }
+  }
 };
 
 
