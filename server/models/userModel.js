@@ -19,6 +19,18 @@ class User {
       });
     });
   };
+
+  login = (id) => {
+    return new Promise((res,rej) => {
+      const user = userSchema.findOne({_id: id},(err,info) => {
+        if (err) { 
+          rej(err)
+        }else{
+          res(info)
+        }
+      })
+    })
+  }
 }
 
 export default new User();
