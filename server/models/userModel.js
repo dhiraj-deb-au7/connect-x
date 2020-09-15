@@ -1,16 +1,17 @@
 import { userSchema } from "../schemas";
+import { hashPassword } from "../utils";
 
 class User {
   signup = (user) => {
-    return new Promise((res, rej) => {
+    return new Promise(async (res, rej) => {
       const newUser = {
         firstName: user.firstName,
         lastName: user.lastName,
         email: user.email,
-        password: user.password,
+        password: await hashPassword(user.password),
       };
 
-      userSchema.create(user, (err, info) => {
+      userSchema.create(newUser, (err, info) => {
         if (err) {
           rej(err);
         } else {
