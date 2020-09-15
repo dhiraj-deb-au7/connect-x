@@ -6,7 +6,7 @@ const userController = {
       const user = await User.signup(req.body);
       res.status(200).send("user created successfully!");
     } catch (error) {
-      console.log(error._message);
+      console.log(error);
       res.status(400).send(error._message);
     }
   },
