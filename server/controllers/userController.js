@@ -10,6 +10,13 @@ const userController = {
       res.status(400).send(error._message);
     }
   },
+
+  // login: async(req,res) => {
+  //   try {
+
+  //   }
+  // }
 };
+
 
 export default userController;

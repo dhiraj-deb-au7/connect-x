@@ -20,7 +20,7 @@ class User {
     });
   };
 
-  login = (id) => {
+  login = (user) => {
     return new Promise((res,rej) => {
       const user = userSchema.findOne({_id: id},(err,info) => {
         if (err) { 
