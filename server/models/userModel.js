@@ -1,5 +1,5 @@
 import { userSchema } from "../schemas";
-import { hashPassword , comparePassword} from "../utils";
+import { hashPassword, comparePassword } from "../utils";
 
 class User {
   signup = (user) => {
@@ -22,19 +22,32 @@ class User {
   };
 
   login = (user) => {
-    return new Promise(async (res,rej) => {
-      try{
-        const User = await userSchema.findOne({ email:user.email })
-        if(!User) throw new Error('Unable to login')
-        const isMatch = await comparePassword(user.password,User.password)
-        if(!isMatch) throw new Error('Unable to Login')
-        res(User) 
-      }catch(error){
-        rej(error.message)
-      }
-     
-    })
-  }
+    return new Promise(async (res, rej) => {
+      // try{
+      //   const User = await userSchema.findOne({ email:user.email })
+      //   if(!User) throw new Error('Unable to login')
+      //   const isMatch = await comparePassword(user.password,User.password)
+      //   if(!isMatch) throw new Error('Unable to Login')
+      //   res(User)
+      // }catch(error){
+      //   rej(error.message)
+      // }
+      return new Promise(async (res, rej) => {
+        userSchema.findOne({ email: user.email }, async (err, info) => {
+          if (err) {
+            rej(err);
+          } else {
+            const isMatch = await comparePassword(user.password, info.password);
+            if (!isMatch) {
+              rej({ error: "password did not match" });
+            } else {
+              res(info);
+            }
+          }
+        });
+      });
+    });
+  };
 }
 
 export default new User();
