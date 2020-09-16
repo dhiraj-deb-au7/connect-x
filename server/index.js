@@ -1,4 +1,5 @@
-import express, { urlencoded } from "express";
+import express, { urlencoded, json } from "express";
+import cors from "cors";
 import "dotenv/config";
 
 import "./configs/dbConnection";
@@ -6,6 +7,8 @@ import { signupRoute , loginRoute } from "./routes";
 
 const app = express();
 app.use(urlencoded({ extended: true }));
+app.use(json());
+app.use(cors());
 
 // Server port
 const PORT = process.env.PORT || 5000;
