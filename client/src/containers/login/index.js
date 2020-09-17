@@ -1,25 +1,19 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-import { SignupPage } from "../../components";
+import { LoginPage } from "../../components";
 
-class Signup extends Component {
+class Login extends Component {
   state = {
     error: "",
     formdata: {
-      firstName: "",
-      lastName: "",
       email: "",
       password: "",
-      confirmPassword: "",
     },
   };
 
-  firstNameRef = React.createRef();
-  lastNameRef = React.createRef();
   emailRef = React.createRef();
   passwordRef = React.createRef();
-  confirmPasswordRef = React.createRef();
 
   inputHandler = (e) => {
     const name = e.target.name;
@@ -36,12 +30,11 @@ class Signup extends Component {
     try {
       const { formdata } = this.state;
       const { history } = this.props;
-      const data = await axios.post("/signup", {
-        firstName: formdata.firstName,
-        lastName: formdata.lastName,
+      const data = await axios.post("/login", {
         email: formdata.email,
         password: formdata.password,
       });
+      console.log(data);
     } catch (error) {
       console.log(error.response.data);
     }
@@ -50,19 +43,16 @@ class Signup extends Component {
   render() {
     const { formdata, error } = this.state;
     return (
-      <SignupPage
+      <LoginPage
         error={error}
         formdata={formdata}
         submitHandler={this.submitHandler}
         inputHandler={this.inputHandler}
-        firstNameRef={this.firstNameRef}
-        lastNameRef={this.lastNameRef}
         emailRef={this.emailRef}
         passwordRef={this.passwordRef}
-        confirmPasswordRef={this.confirmPasswordRef}
       />
     );
   }
 }
 
-export default Signup;
+export default Login;

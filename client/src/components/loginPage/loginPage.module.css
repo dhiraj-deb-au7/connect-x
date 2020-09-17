@@ -1,0 +1,24 @@
+.Container {
+  position: relative;
+  display: block;
+}
+.Form {
+  position: absolute;
+  width: 50%;
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+  margin: 10px;
+  top: 60px;
+  right: 5px;
+}
+.Input {
+  width: 50%;
+}
+
+.LoginImage img {
+  position: absolute;
+  width: 40%;
+  left: 20px;
+  top: 50px;
+}
