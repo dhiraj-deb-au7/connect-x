@@ -3,7 +3,7 @@ import cors from "cors";
 import "dotenv/config";
 
 import "./configs/dbConnection";
-import { signupRoute , loginRoute } from "./routes";
+import { signupRoute, loginRoute, postRoute } from "./routes";
 
 const app = express();
 app.use(urlencoded({ extended: true }));
@@ -17,6 +17,7 @@ app.listen(PORT, () => console.log(`server is running on port ${PORT}`));
 // Routes
 app.use("/signup", signupRoute);
 app.use("/login", loginRoute);
+app.use("/posts", postRoute);
 
 // Homepage
 app.use("/", (req, res) => {
