@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import axios from "axios";
+import { connect } from "react-redux";
 
+import * as actions from "../../Store/actions";
 import { LoginPage } from "../../components";
 
 class Login extends Component {
@@ -27,17 +28,9 @@ class Login extends Component {
   submitHandler = async (e) => {
     e.preventDefault();
 
-    try {
-      const { formdata } = this.state;
-      const { history } = this.props;
-      const data = await axios.post("/login", {
-        email: formdata.email,
-        password: formdata.password,
-      });
-      console.log(data);
-    } catch (error) {
-      console.log(error.response.data);
-    }
+    const { formdata } = this.state;
+    const { history } = this.props;
+    this.props.onLogin(formdata.email, formdata.password);
   };
 
   render() {
@@ -55,4 +48,10 @@ class Login extends Component {
   }
 }
 
-export default Login;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onLogin: (email, password) => dispatch(actions.authLogin(email, password)),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(Login);
