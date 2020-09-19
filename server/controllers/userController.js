@@ -16,6 +16,7 @@ const userController = {
 
   login: async (req, res) => {
     try {
+      console.log(req.body);
       const user = await User.login(req.body);
       if (user) {
         if (await comparePassword(req.body.password, user.password)) {

@@ -3,7 +3,8 @@ import cors from "cors";
 import "dotenv/config";
 
 import "./configs/dbConnection";
-import { signupRoute, loginRoute, postRoute } from "./routes";
+import { signupRoute, postRoute } from "./routes";
+import loginRoute from "./routes/loginRoute";
 
 const app = express();
 app.use(urlencoded({ extended: true }));
