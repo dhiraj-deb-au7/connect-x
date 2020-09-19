@@ -1,0 +1,68 @@
+.Container {
+  position: relative;
+  display: "flex";
+  justify-content: "space-around";
+  border-bottom: 2px solid gainsboro;
+}
+.Image {
+  width: "170px";
+  height: "170px";
+  border-radius: "90px";
+  border-color: "black";
+  margin-top: "15px";
+  margin-left: 50px;
+}
+
+.Image img {
+  height: 100%;
+}
+
+.UserConfig {
+  position: absolute;
+  display: flex;
+  font-size: "35px";
+  margin-top: "40px";
+  justify-content: space-between;
+  width: 40%;
+  align-items: center;
+  padding: 10px;
+  margin-right: 20px;
+  right: 20px;
+}
+
+.Button button {
+  margin-left: 550px;
+  width: 500px;
+  height: 30px;
+  border-radius: 20px;
+  border-color: grey;
+  background-color: lightgrey;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.Profile h4,
+.Profile p {
+  margin-left: 50px;
+}
+
+.Posts {
+  display: block;
+  margin: 20px 50px;
+  flex-flow: column;
+  box-sizing: border-box;
+  overflow: hidden;
+  border: 2px solid grey;
+}
+
+.Post {
+  display: flex;
+  height: 200px;
+  width: 200px;
+  padding: 5px;
+  margin: 5px;
+  border: 2px solid gainsboro;
+  justify-content: space-around;
+  box-sizing: border-box;
+}

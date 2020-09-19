@@ -1,6 +1,9 @@
 import React from "react";
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
 
+import classes from "./SignupPage.module.css";
+import LoginImage from "../../assets/images/Home-Page-login.jpg";
+
 const SignupPage = (props) => {
   const {
     error,
@@ -15,12 +18,13 @@ const SignupPage = (props) => {
   } = props;
 
   return (
-    <div>
+    <div className={classes.Container}>
       {error && <Label>{error}</Label>}
-      <Form onSubmit={submitHandler}>
+      <Form className={classes.Form} onSubmit={submitHandler}>
         <FormGroup>
           <Label for="firstName">First name</Label>
           <Input
+            className={classes.Input}
             id="firstName"
             name="firstName"
             value={firstName}
@@ -32,6 +36,7 @@ const SignupPage = (props) => {
         <FormGroup>
           <Label for="lastName">Last name</Label>
           <Input
+            className={classes.Input}
             id="lastName"
             name="lastName"
             value={lastName}
@@ -43,6 +48,7 @@ const SignupPage = (props) => {
         <FormGroup>
           <Label for="email">Email</Label>
           <Input
+            className={classes.Input}
             id="email"
             name="email"
             value={email}
@@ -54,6 +60,7 @@ const SignupPage = (props) => {
         <FormGroup>
           <Label for="password">Password</Label>
           <Input
+            className={classes.Input}
             id="password"
             name="password"
             value={password}
@@ -65,6 +72,7 @@ const SignupPage = (props) => {
         <FormGroup>
           <Label for="confirmPassword">Confirm password</Label>
           <Input
+            className={classes.Input}
             id="confirmPassword"
             name="confirmPassword"
             value={confirmPassword}
@@ -77,6 +85,9 @@ const SignupPage = (props) => {
           <Button type="submit">Signup</Button>
         </div>
       </Form>
+      <div className={classes.LoginImage}>
+        <img src={LoginImage} alt="social Media Image" />
+      </div>
     </div>
   );
 };
