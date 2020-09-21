@@ -1,1 +1,8 @@
-export { authStart, authFail, authSuccess, authLogin } from "./Auth";
+export {
+  authStart,
+  authFail,
+  authSuccess,
+  authLogin,
+  logout,
+  authCheckState,
+} from "./Auth";

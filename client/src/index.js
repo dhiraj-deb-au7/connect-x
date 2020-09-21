@@ -7,10 +7,10 @@ import thunk from "redux-thunk";
 import "bootstrap/dist/css/bootstrap.min.css";
 import App from "./App";
 
-import authLoginReducer from "./Store/reducers/authLogin";
+import authReducer from "./Store/reducers/auth";
 
 const rootReducer = combineReducers({
-  auth: authLoginReducer,
+  auth: authReducer,
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

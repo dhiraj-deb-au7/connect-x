@@ -23,7 +23,6 @@ class User {
 
   login = (user) => {
     return new Promise((res, rej) => {
-      console.log(user);
       userSchema.findOne({ email: user.email }, (err, info) => {
         if (err) {
           rej(err);

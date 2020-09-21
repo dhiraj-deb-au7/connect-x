@@ -4,6 +4,6 @@ import { userController } from "../controllers";
 
 const router = Router();
 
-router.post("/", userController.login);
+router.post("/api/v1", userController.login);
 
 export default router;

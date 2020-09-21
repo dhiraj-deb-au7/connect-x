@@ -43,10 +43,17 @@ class Login extends Component {
         inputHandler={this.inputHandler}
         emailRef={this.emailRef}
         passwordRef={this.passwordRef}
+        loading={this.props.loading}
       />
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    loading: state.auth.loading,
+  };
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -54,4 +61,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

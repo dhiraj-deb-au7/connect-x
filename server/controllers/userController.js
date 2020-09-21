@@ -16,13 +16,13 @@ const userController = {
 
   login: async (req, res) => {
     try {
-      console.log(req.body);
       const user = await User.login(req.body);
       if (user) {
         if (await comparePassword(req.body.password, user.password)) {
           const token = jwt.sign({ _id: user._id }, process.env.SECRET_KEY);
           const { _id, firstName, lastName, email } = user;
-          res.json({ token, user: { _id, firstName, lastName, email } });
+          res.json({ token, _id, firstName, lastName, email, _id });
+          console.log(res.json);
         } else {
           res.status(400).send("password did not match!");
         }
